@@ -12,9 +12,9 @@ namespace TrackerLibrary.Data
     public class TeamData : ITeamData
     {
         private readonly IDataAccess _dataAccess;
-        private readonly ConnectionStringData _connectionString;
+        private readonly IConnectionStringData _connectionString;
 
-        public TeamData(IDataAccess dataAccess, ConnectionStringData connectionString)
+        public TeamData(IDataAccess dataAccess, IConnectionStringData connectionString)
         {
             _dataAccess = dataAccess;
             _connectionString = connectionString;

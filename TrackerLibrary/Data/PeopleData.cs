@@ -13,9 +13,9 @@ namespace TrackerLibrary.Data
     public class PeopleData : IPeopleData
     {
         private readonly IDataAccess _dataAccess;
-        private readonly ConnectionStringData _connectionString;
+        private readonly IConnectionStringData _connectionString;
 
-        public PeopleData(IDataAccess dataAccess, ConnectionStringData connectionString)
+        public PeopleData(IDataAccess dataAccess, IConnectionStringData connectionString)
         {
             _dataAccess = dataAccess;
             _connectionString = connectionString;

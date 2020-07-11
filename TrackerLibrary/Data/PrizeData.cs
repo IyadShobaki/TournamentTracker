@@ -12,9 +12,9 @@ namespace TrackerLibrary.Data
     public class PrizeData : IPrizeData
     {
         private readonly IDataAccess _dataAccess;
-        private readonly ConnectionStringData _connectionString;
+        private readonly IConnectionStringData _connectionString;
 
-        public PrizeData(IDataAccess dataAccess, ConnectionStringData connectionString)
+        public PrizeData(IDataAccess dataAccess, IConnectionStringData connectionString)
         {
             _dataAccess = dataAccess;
             _connectionString = connectionString;
@@ -32,7 +32,7 @@ namespace TrackerLibrary.Data
             await _dataAccess.SaveData("dbo.spPrizes_Insert",
                 p, _connectionString.SqlConnectionName);
 
-            return p.Get<int>("Id");
+            return p.Get<int>("id");
         }
     }
 }

@@ -7,6 +7,6 @@ namespace TrackerLibrary.Data
     public interface ITeamData
     {
         Task CreateTeam(TeamModel team);
-        Task<List<TeamModel>> GetTeam_All()
+        Task<List<TeamModel>> GetTeam_All();
     }
 }

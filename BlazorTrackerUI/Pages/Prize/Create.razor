@@ -1,0 +1,41 @@
+﻿@page "/Prize/Create"
+
+@inject IPrizeData prizeData
+@inject NavigationManager navigationManager
+
+<h3>Create Prize</h3>
+
+<EditForm Model="@prize" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary Model="@prize"/>
+    <div class="form-group">
+        <label class="control-label">Place Number</label>
+        <InputNumber @bind-Value="prize.PlaceNumber" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Place Name</label>
+        <InputText @bind-Value="prize.PlaceName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Prize Amount</label>
+        <InputNumber @bind-Value="prize.PrizeAmount" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Prize Percentage</label>
+        <InputNumber @bind-Value="prize.PrizePercentage" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create Prize" class="btn btn-primary" />
+    </div>
+</EditForm>
+
+@code {
+    private PrizeModel prize = new PrizeModel();
+
+    private void HandleValidSubmit()
+    {
+        prizeData.CreatePrize(prize);
+
+        navigationManager.NavigateTo("/"); // To the home page for now!
+    }
+}
