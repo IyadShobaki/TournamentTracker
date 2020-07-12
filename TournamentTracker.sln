@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerLibrary", "TrackerLibrary\TrackerLibrary.csproj", "{23DE6B7F-F517-4CC5-807E-A3DC116C7E62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorTrackerUI", "BlazorTrackerUI\BlazorTrackerUI.csproj", "{EB9FBD70-E464-4A7B-A4D5-199F160BC440}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTrackerUI", "BlazorTrackerUI\BlazorTrackerUI.csproj", "{EB9FBD70-E464-4A7B-A4D5-199F160BC440}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

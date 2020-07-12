@@ -1,0 +1,6 @@
+validate decimal  System.ComponentModel.DataAnnotations
+Validate decimal value to 2 decimal places with data annotations:
+
+[RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Invalid price")]
+
+ (^\d*(\.|,|(\.\d{1,2})|(,\d{1,2}))?$)  

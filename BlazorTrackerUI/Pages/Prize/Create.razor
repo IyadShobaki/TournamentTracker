@@ -7,7 +7,7 @@
 
 <EditForm Model="@prize" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator />
-    <ValidationSummary Model="@prize"/>
+    <ValidationSummary />
     <div class="form-group">
         <label class="control-label">Place Number</label>
         <InputNumber @bind-Value="prize.PlaceNumber" class="form-control" />
@@ -17,25 +17,70 @@
         <InputText @bind-Value="prize.PlaceName" class="form-control" />
     </div>
     <div class="form-group">
-        <label class="control-label">Prize Amount</label>
-        <InputNumber @bind-Value="prize.PrizeAmount" class="form-control" />
+        <p>Choose between Prize Amount or Prize Percentage by checking the box</p>
+        <InputCheckbox @bind-Value="PrizeAmountBox" class="form-check-input" @onchange="Hide" />
     </div>
-    <div class="form-group">
-        <label class="control-label">Prize Percentage</label>
-        <InputNumber @bind-Value="prize.PrizePercentage" class="form-control" />
-    </div>
+    @if (PrizeAmountBox)
+    {
+        <div class="form-group">
+            <label class="control-label">Prize Amount</label>
+            <InputNumber @bind-Value="prize.PrizeAmount" class="form-control" />
+        </div>
+    }
+
+    @if (!PrizeAmountBox)
+    {
+        <div class="form-group">
+            <label class="control-label">Prize Percentage</label>
+            <InputNumber @bind-Value="prize.PrizePercentage" class="form-control" />
+        </div>
+    }
+
     <div class="form-group">
         <input type="submit" value="Create Prize" class="btn btn-primary" />
     </div>
+    @if (messageBox)
+    {
+        <p>You have to choose between Prize Amount or Prize Percentage.</p>
+    }
 </EditForm>
 
 @code {
     private PrizeModel prize = new PrizeModel();
+    [Parameter]
+    public bool PrizeAmountBox { get; set; } = true;
+    [Parameter]
+    public bool messageBox { get; set; } = false;
+
+    private bool IsValid(PrizeModel model)
+    {
+        bool output = true;
+        if (model.PrizeAmount > 0 && model.PrizePercentage > 0)
+        {
+            output = false;
+        }
+        return output;
+    }
+
+    private void Hide()
+    {
+        PrizeAmountBox = false;
+    }
 
     private void HandleValidSubmit()
     {
-        prizeData.CreatePrize(prize);
+        if (IsValid(prize))
+        {
+            messageBox = false;
+            prizeData.CreatePrize(prize);
 
-        navigationManager.NavigateTo("/"); // To the home page for now!
+            navigationManager.NavigateTo("/"); // To the home page for now!
+        }
+        else
+        {
+            messageBox = true;
+        }
+
     }
+
 }
