@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TrackerLibrary.DataAccess
 {
-    public class ConnectionStringData : IConnectionStringData
+    public class ConnectionStringData
     {
         public string SqlConnectionName { get; set; } = "Default";
     }

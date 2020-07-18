@@ -11,9 +11,9 @@ namespace TrackerLibrary.Data
     public class MatchupData : IMatchupData
     {
         private readonly IDataAccess _dataAccess;
-        private readonly IConnectionStringData _connectionString;
+        private readonly ConnectionStringData _connectionString;
 
-        public MatchupData(IDataAccess dataAccess, IConnectionStringData connectionString)
+        public MatchupData(IDataAccess dataAccess, ConnectionStringData connectionString)
         {
             _dataAccess = dataAccess;
             _connectionString = connectionString;

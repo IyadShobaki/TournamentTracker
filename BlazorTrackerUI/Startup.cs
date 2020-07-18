@@ -32,7 +32,7 @@ namespace BlazorTrackerUI
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<IDataAccess, SqlDb>();
-            services.AddSingleton<IConnectionStringData, ConnectionStringData>();
+            services.AddSingleton<ConnectionStringData>();
             services.AddSingleton<IMatchupData, MatchupData>();
             services.AddSingleton<IPeopleData, PeopleData>();
             services.AddSingleton<IPrizeData, PrizeData>();

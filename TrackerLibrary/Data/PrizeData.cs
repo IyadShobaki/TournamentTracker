@@ -12,9 +12,9 @@ namespace TrackerLibrary.Data
     public class PrizeData : IPrizeData
     {
         private readonly IDataAccess _dataAccess;
-        private readonly IConnectionStringData _connectionString;
+        private readonly ConnectionStringData _connectionString;
 
-        public PrizeData(IDataAccess dataAccess, IConnectionStringData connectionString)
+        public PrizeData(IDataAccess dataAccess, ConnectionStringData connectionString)
         {
             _dataAccess = dataAccess;
             _connectionString = connectionString;
